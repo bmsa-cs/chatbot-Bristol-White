@@ -9,6 +9,7 @@ import os
 import importlib.util
 import time
 import random
+from datetime import date
 
 def run_tests():
   """
@@ -28,52 +29,58 @@ def main():
   time.sleep(0.5)
   print("Nice to meet you", name,"!")
   age = int(input("So how old are ya?"))
-  if age >= 16:
+  if age == 16:
     print("Ah,",str(age),"is a good age! Old enough to drive, nice!")
-  elif age == 16:
+  elif age == 15:
     print("Ah,",str(age),"is a good age! Old enough to get your drivers permit, nice!")
-  elif age >= 21:
-    print("Ah,",str(age),"is a good age! Old enough to drink and drive! (But don't combine those two things please!)")
+  elif age >= 20:
+    print("Ah,",str(age),"is a good age! Old enough to drink and drive! \n(But don't combine those two things please!)")
   else:
     print("Ah,",str(age),"is a good age!")
   time.sleep(0.5)
   print("Bet I can guess what year you were born.")
   time.sleep(0.3)
   year = 2021 - age
-  if year <= 0:
+  today = date.today()
+  if year <= 1800:
     print("Hey, wait a minute, you shouldn't be alive!")
   else:
+    print("If today is",today,"...")
     print("Let's see here... according to my calculations you were born in", year,)
   answer = input("Was I correct? (y/n)")
   if answer == "y":
     print("Easy, a robot never fails!")
   if answer == "n":
-    answer_two = input("Darn, was I close at least? (y/n)")
-    if answer_two == "y":
+    answer_two = input("Darn, was I close at least? (yy/nn)")
+    if answer_two == "yy":
       print("Well that's good! Robots aren't perfect afterall!")
-    if answer_two == 'n':
+    if answer_two == 'nn':
       print("Ah, that's unlucky. Robots aren't perfect.")
-    else:
-      print("Sorry, I don't quite understand what you said. Try again pelase!")
-      answer_two = input("Darn, was I close at least? (y/n)")
-      if answer_two == "y":
-        print("Well that's good! Robots aren't perfect afterall!")
-      if answer_two == 'n':
-        print("Ah, that's unlucky. Robots aren't perfect.")
+  mood = input("So anyways, how are you feeling today?")
+  if mood == "Good" or "Happy" or "Nice":
+    print("I'm glad you're feeling", mood.lower() ,",that's good to hear!")
   else:
-    print("Sorry, I don't quite understand what you said. Try again please!")
-    answer = input("Was I correct? (y/n)")
-    if answer == "y":
-      print("Easy, a robot never fails!")
-    if answer == "n":
-      answer_two = input("Darn, was I close at least? (y/n)")
-      if answer_two == "y":
-        print("Well that's good! Robots aren't perfect afterall!")
-      if answer_two == 'n':
-        print("Ah, that's unlucky. Robots aren't perfect.")
-      else:
-        print("Sorry, I don't quite understand what you said. Try again pelase!")
-
+    print("Thanks for sharing", name ,"!")
+  time.sleep(1)
+  print("You know, I really wanna play a number game right now. Let's play \n\"Guess the Number!\"")
+  answer_three = input("I'll think of a number between 1 and 100, and you have to guess it. \nReady? (y/n)")
+  if answer_three == "y":
+    number = random.randint(1,100)
+    guess = input("Ok, guess the number! I'll give you 10 seconds to think.")
+    time.sleep(10)
+    if guess == number:
+      print("Wow, you were correct! Nice job", name,"!")
+    if guess != number:
+      print("The number was:", number,". You were close at least!")
+  if answer_three == "n":
+    print("Sorry, but I'm not gonna take no for an answer!")
+    number = random.randint(1,100)
+    guess = input("Ok, guess the number! I'll give you 10 seconds to think.")
+    time.sleep(10)
+    if guess == number:
+      print("Wow, you were correct! Nice job", name,"!")
+    if guess != number:
+      print("The number was:", number,". You were close at least!")
 
 if __name__ == "__main__":
   main()
