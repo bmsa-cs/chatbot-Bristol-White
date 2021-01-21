@@ -76,11 +76,29 @@ def main():
     print("Sorry, but I'm not gonna take no for an answer!")
     number = random.randint(1,100)
     guess = input("Ok, guess the number! I'll give you 10 seconds to think.")
-    time.sleep(10)
+    time.sleep(5)
     if guess == number:
       print("Wow, you were correct! Nice job", name,"!")
     if guess != number:
       print("The number was:", number,". You were close at least!")
+  time.sleep(1)
+  print("Ok, I wanna get to know you better. I'm gonna ask you a series of questions, ok?")
+  question = random.randint(1,5)
+  if question == 1:
+    answer_four = input("What is your favorite color?")
+  elif question == 2:
+    answer_four = input("Have you had any pets in the past?")
+  elif question == 3:
+    answer_four = input("Where were you born?")
+  elif question == 4:
+    answer_four = input("Do you have any hobbies?")
+  elif question == 5:
+    answer_four = input("Do you still feel", mood,"?")
+  time.sleep(3)
+  if answer_four == "Las Vegas":
+    print("Oh wow, me too!")
+  else:
+    print("That's pretty interesting, thanks for sharing.")
 
 if __name__ == "__main__":
   main()
